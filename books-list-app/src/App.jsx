@@ -19,11 +19,11 @@ export default function App() {
 
     } else if (activeFilter === 'read') {
         // Оставляем только те, которые прочитаны: isRead === true
-        filteredBooks = booksList.filter(book => book.isRead !== false);
+        filteredBooks = booksList.filter(book => book.isRead === true);
 
     }   else if (activeFilter === 'no-read') {
         // Оставляем только те, которые непрочитаны: isRead === false
-        filteredBooks = booksList.filter(book => book.isRead !== true);
+        filteredBooks = booksList.filter(book => book.isRead === false);
     }
 
     const handleFilterClick = (filterName) => {
@@ -37,13 +37,23 @@ export default function App() {
         setBooksList(updateBooks); // обновляем состояние
     }
 
+    // СЧЕТЧИКИ
+    //  Общее количество книг
+    const totalBooksCount = booksList.length;
+    //  Количество прочитанных книг
+    const readBooksCount = booksList.filter(book => book.isRead === true).length;
+
     return (
 
         <div className='app'>
             <div className="app__container">
                 <h1 className="app__title">Список книг</h1>
                 <div className="app__wrapper">
-                    <aside className="app__options">                    
+                    <aside className="app__options">
+                        <div className="app__counters">
+                            <p className="app__counter">📚 Всего книг: {totalBooksCount}</p>
+                            <p className="app__counter">✅ Прочитано: {readBooksCount}</p>
+                        </div>                    
                         <div className="app__buttons">
                             <button 
                                 className={`app__btn ${activeFilter === 'all' ? 'app__btn--active' : ''}`}

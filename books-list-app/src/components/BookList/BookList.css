@@ -17,3 +17,10 @@
         gap: 10px;   
     }
 }
+
+.book-list__empty {
+    text-align: center;
+    font-size: 20px;
+    color: #666;
+    padding: 40px;
+}

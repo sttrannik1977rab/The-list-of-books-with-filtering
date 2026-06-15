@@ -70,6 +70,8 @@
 .book-card__img {
     display: block;
     object-fit: cover;
+    width: 120px;
+    height: 120px;
 
     @media (max-width: 1550px) {
         width: 80px;

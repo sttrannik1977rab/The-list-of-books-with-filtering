@@ -4,24 +4,36 @@ import './BookList.css';
 
 export const BookList = ({ books, onDeleteBook }) => {
 
-    return (
+    if (!books || books.length === 0) {
 
-        <ul className="book-list">
-            {books.map((book) => (
+        return (
+            
+            <p className="book-list__empty">📭 Книги не найдены. Попробуйте изменить фильтр.</p>
+        )
 
-                <li className="book-list__item" key={book.id}>
-                    <BookCard
-                        id={book.id} 
-                        title={book.title}
-                        author={book.author}
-                        year={book.year}
-                        isRead={book.isRead}
-                        cover={book.cover}
-                        genre={book.genre} 
-                        onDelete={onDeleteBook}   
-                    />
-                </li>
-            ))}
-        </ul>
-    )
+    } else {
+
+        return (
+
+            <ul className="book-list">
+                {books.map((book) => (
+
+                    <li className="book-list__item" key={book.id}>
+                        <BookCard
+                            id={book.id} 
+                            title={book.title}
+                            author={book.author}
+                            year={book.year}
+                            isRead={book.isRead}
+                            cover={book.cover}
+                            genre={book.genre} 
+                            onDelete={onDeleteBook}   
+                        />
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
+    
 };
